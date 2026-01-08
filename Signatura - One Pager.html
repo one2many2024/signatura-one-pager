@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signatura - One Pager</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* FINAL PALETTE */
+            --primary-color: #0F766E; 
+            --primary-dark: #115E59;
+            --secondary-color: #F59E0B;
+            --secondary-light: #FEF3C7;
+            --accent-color: #3B82F6;
+            --text-dark: #0F172A;
+            --text-light: #475569;
+            --bg-page: #F8FAFC;
+            --bg-sidebar: #F1F5F9;
+            --border-color: #E2E8F0;
+            --white: #ffffff;
+            --bg-highlight: #F0FDFA;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Assistant', 'Heebo', sans-serif;
+            background-color: #cbd5e1;
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .page-container {
+            background: var(--white);
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* --- Header --- */
+        header {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            background-color: var(--primary-color); 
+            overflow: hidden;
+        }
+
+        .header-fallback-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px 50px;
+            color: white;
+            background: linear-gradient(to top, rgba(15, 118, 110, 0.98) 0%, rgba(15, 23, 42, 0.5) 70%, rgba(15, 23, 42, 0.2) 100%);
+        }
+
+        .header-cover-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+            display: block;
+        }
+
+        .header-text h1 {
+            font-family: 'Heebo', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 12px;
+            letter-spacing: -1.5px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-text h2 {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.95;
+            max-width: 800px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            color: var(--bg-highlight); 
+        }
+        
+        .logo-dot {
+            color: var(--secondary-color);
+        }
+
+        /* --- Social Proof Bar --- */
+        .traction-banner {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 15px 50px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            z-index: 10;
+        }
+        
+        .traction-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), #FBBF24);
+        }
+
+        /* --- Layout --- */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 65% 35%;
+            min-height: 800px;
+        }
+
+        /* --- Main Content --- */
+        .column-main {
+            padding: 50px 50px;
+            background-color: var(--white);
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: 'Heebo', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title span {
+            border-bottom: 4px solid var(--secondary-color);
+            padding-bottom: 5px;
+        }
+
+        .highlight-box {
+            background: var(--bg-highlight);
+            border-right: 4px solid var(--primary-color);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 6px;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+            color: var(--text-dark);
+        }
+        
+        .feature-list li strong {
+            color: var(--primary-dark);
+            /* margin-left removed as it is handled by space char or structure now, but kept for safety if single block */
+        }
+
+        .traction-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            background: #fff;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .stat-icon {
+            font-size: 1.5rem;
+            margin-left: 15px;
+            color: var(--secondary-color);
+        }
+
+        /* --- Sidebar --- */
+        .column-sidebar {
+            background-color: var(--bg-sidebar);
+            padding: 50px 35px;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+        }
+
+        .sidebar-item {
+            position: relative;
+        }
+
+        .sidebar-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        .sidebar-list {
+            list-style: none;
+        }
+
+        .sidebar-list li {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            position: relative;
+            padding-right: 18px;
+            color: var(--text-dark);
+        }
+
+        .sidebar-list li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            right: 0;
+            top: -2px;
+        }
+
+        /* Profile */
+        .profile-container {
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .profile-img-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px auto;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--bg-highlight);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            object-fit: cover;
+            background-color: var(--primary-color);
+        }
+
+        .profile-name {
+            font-family: 'Heebo', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .profile-role {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .profile-bio {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* Contact */
+        .contact-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        
+        .contact-row span {
+            min-width: 25px;
+        }
+
+        .contact-row a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            border-bottom: 1px dotted transparent;
+        }
+        
+        .contact-row a:hover {
+            color: var(--primary-dark);
+            border-bottom-color: var(--primary-dark);
+        }
+
+        /* --- Footer (Clean Image Only + Logo) --- */
+        .page-footer {
+            position: relative;
+            background-color: var(--primary-color);
+            /* Fixed height for the image footer - Reduced by 50% */
+            height: 110px;
+            margin-top: auto;
+            overflow: hidden;
+            /* No padding needed for full image */
+            padding: 0;
+        }
+
+        .footer-cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Logo added to footer */
+        .footer-logo {
+            position: absolute;
+            bottom: 30px; /* Spacing from bottom */
+            left: 40px;   /* Spacing from left */
+            height: 50px; /* Logo size reduced to fit new height */
+            width: auto;
+            z-index: 10; /* Ensure it is above the background */
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-grid { grid-template-columns: 1fr; }
+            .column-sidebar { order: 2; border-right: none; background: #f8fafc; border-top: 1px solid var(--border-color); }
+            .header-text h1 { font-size: 2.8rem; }
+            .profile-container { box-shadow: none; border: none; padding: 0; background: transparent; }
+            /* Mobile adjustment for footer logo */
+            .footer-logo {
+                left: 20px;
+                bottom: 25px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <!-- Header -->
+        <header>
+            <div class="header-fallback-content">
+                <div class="header-text">
+                    <h1>Signatura<span class="logo-dot">.</span></h1>
+                    <h2>הופכים את הכאוס של חיפוש העבודה – לניהול קריירה חכם, מבוסס דאטה.</h2>
+                </div>
+            </div>
+
+            <img src="signatura_header.jpg" onerror="this.style.display='none'" class="header-cover-img" alt="Signatura Header">
+        </header>
+
+        <!-- Social Proof / Traction -->
+        <div class="traction-banner">
+            🚀 200+ משתמשים פעילים תוך 48 שעות! (השקה שקטה)
+        </div>
+
+        <div class="main-grid">
+            <!-- Right Column: Story & Product -->
+            <div class="column-main">
+                
+                <div class="section">
+                    <h3 class="section-title"><span>הבעיה: "החור השחור" של חיפוש העבודה</span></h3>
+                    <p>תהליך חיפוש עבודה הוא פרויקט מורכב, רב-ערוצי ומתיש. מועמדים שולחים עשרות קורות חיים, מאבדים מעקב אחרי גרסאות, שוכחים לבצע Follow-up, ובעיקר – פועלים מתוך תחושת חוסר שליטה.</p>
+                    <div class="highlight-box">
+                        <strong>התוצאה:</strong> החמצת הזדמנויות, תסכול, וזמן חיפוש עבודה שמתארך שלא לצורך.
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title"><span>הפתרון: CRM אישי לניהול קריירה</span></h3>
+                    <p>Signatura היא פלטפורמת SaaS שנותנת למועמד את הכלים שיש למגייסים, אבל מהצד שלו:</p>
+                    <ul class="feature-list">
+                        <li>
+                            <span style="min-width: 25px;">✅</span>
+                            <div>
+                                <strong>מעקב חכם:</strong> תמונת מצב בזמן אמת של כל ההגשות, הסטטוסים והמשימות.
+                            </div>
+                        </li>
+                        <li>
+                            <span style="min-width: 25px;">✅</span>
+                            <div>
+                                <strong>ניהול גרסאות:</strong> התאמה מדויקת של קורות חיים לכל משרה ומעקב אחרי מה נשלח למי.
+                            </div>
+                        </li>
+                        <li>
+                            <span style="min-width: 25px;">✅</span>
+                            <div>
+                                <strong>AI Companion:</strong> (בפיתוח) ניתוח משרות, הכנה לראיונות ואופטימיזציה של פרופיל הלינקדאין.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="section" style="margin-bottom: 0;">
+                    <h3 class="section-title"><span>הסטטוס הנוכחי (Traction)</span></h3>
+                    <p>השקנו השבוע (Soft Launch). התוצאות ב-48 השעות הראשונות:</p>
+                    <div class="traction-stats">
+                        <div class="stat-item"><span class="stat-icon">🚀</span> 200+ משתמשים פעילים (צמיחה אורגנית מלאה).</div>
+                        <div class="stat-item"><span class="stat-icon">📈</span> 100+ הגשות למשרות (Applications) נוהלו דרך המערכת.</div>
+                        <div class="stat-item"><span class="stat-icon">⭐</span> פידבק מהשטח: "כלי פרקטי שנותן ביטחון ושליטה בתהליך".</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Left Column: Bio & Meta Data -->
+            <div class="column-sidebar">
+                
+                <!-- Profile Card -->
+                <div class="sidebar-item profile-container">
+                    <div class="profile-img-container">
+                        <img src="eli_profile.jpg" onerror="this.src='https://placehold.co/400x400/0F766E/ffffff?text=Eli+Gur'" class="profile-img" alt="Eli Gur">
+                    </div>
+                    
+                    <div class="profile-name">Eli Gur</div>
+                    <div class="profile-role">Executive Product & Strategy Leader</div>
+                    <div class="profile-bio">
+                        מומחה בהובלת מוצרי B2B SaaS, אסטרטגיה עסקית וניהול מוצר. יזם בנשמה עם תשוקה לפתרון בעיות אמיתיות.
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="sidebar-item">
+                    <div class="sidebar-title">ליצירת קשר</div>
+                    <div class="contact-row"><span>📞</span> &nbsp; 054-4587489</div>
+                    <div class="contact-row"><span>📧</span> &nbsp; <a href="mailto:hello@signatura.ai">hello@signatura.ai</a></div>
+                    <div class="contact-row"><span>🔗</span> &nbsp; <a href="https://signatura.ai" target="_blank">signatura.ai</a></div>
+                    <div class="contact-row"><span>👔</span> &nbsp; <a href="https://www.linkedin.com/in/eligur/" target="_blank">LinkedIn Profile</a></div>
+                </div>
+
+                <!-- Target Audience -->
+                <div class="sidebar-item">
+                    <div class="sidebar-title">קהל היעד</div>
+                    <ul class="sidebar-list">
+                        <li>מחפשי עבודה בהייטק (ג'וניורים ובכירים).</li>
+                        <li>סטודנטים ובוגרים טריים.</li>
+                        <li>פורשי צה"ל ומסיימי תפקידים בכירים.</li>
+                    </ul>
+                </div>
+
+                <!-- Business Model -->
+                <div class="sidebar-item">
+                    <div class="sidebar-title">מודל עסקי</div>
+                    <ul class="sidebar-list">
+                        <li><strong>Freemium:</strong> בסיס חינם, פיצ'רים מתקדמים בתשלום.</li>
+                        <li><strong>B2B2C:</strong> שת"פ עם מוסדות אקדמיים וארגוני השמה.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <!-- Background Image -->
+            <img src="footer.jpg" onerror="this.style.display='none'" class="footer-cover-img" alt="Footer Background">
+            
+            <!-- Logo added here -->
+            <img src="signatura_logo_no_bg.png" class="footer-logo" alt="Signatura Logo">
+        </footer>
+    </div>
+
+</body>
+</html>
