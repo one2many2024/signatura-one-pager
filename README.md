@@ -1,1 +1,0 @@
-# signatura-one-pager
